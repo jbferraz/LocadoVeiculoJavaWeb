@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Projeto CRUD</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <h:form>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Logo</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">        
+                                <li class="active"><a outcome="/admin/index">Home</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><h:commandLink value="Cadastrar" action="#{usuarioMB.novoUsuario()}"/></li>
+                                        <li><h:commandLink value="Listar" action="/admin/index"/></li>
+
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Veículos
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><h:commandLink value="Cadastrar" action="#{veiculoMB.novoVeiculo()}"/></li>
+                                        <li><h:commandLink value="Listar" action="/admin/listaVeiculos"/></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><h:commandLink class="glyphicon glyphicon-log-in" value=" Logout" action="#{loginMB.realizaLogout()}"/></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="table-responsive">
+                    <h:dataTable var="veiculo" value="#{veiculoMB.listaVeiculos}" styleClass="table">
+                        <f:facet name="header">
+                            <h:outputText value="Tabela de Veiculos" />
+                        </f:facet>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Marca" />
+                            </f:facet>
+                            <h:outputText id="idMarca" value="#{veiculo.marca}"  />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Modelo" />
+                            </f:facet>
+                            <h:outputText id="idModelo" value="#{veiculo.modelo}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Placa" />
+                            </f:facet>
+                            <h:outputText id="idPlaca" value="#{veiculo.placa}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cor" />
+                            </f:facet>
+                            <h:outputText id="idCor" value="#{veiculo.cor}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ano" />
+                            </f:facet>
+                            <h:outputText id="idAno" value="#{veiculo.ano}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Valor KM" />
+                            </f:facet>
+                            <h:outputText id="idValorKm" value="#{veiculo.valorKm}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Valor Diaria" />
+                            </f:facet>
+                            <h:outputText id="idValorDia" value="#{veiculo.valorDia}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="KM" />
+                            </f:facet>
+                            <h:outputText id="idKmDevolucao" value="#{veiculo.kmDevolucao}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Opcionais" />
+                            </f:facet>
+                            <h:outputText id="idOpcionais" value="#{veiculo.opcionais}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Status" />
+                            </f:facet>
+                            <h:outputText id="idLocado" value="#{veiculo.locadoString}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <span>
+                                    <h:outputText value="Operação" />
+                                </span>
+                            </f:facet>
+                            <div class="btn-group">
+                                <h:commandButton value="Editar "  class="btn btn-default" action="#{veiculoMB.editarVeiculo(veiculo)}" />
+
+                                <h:commandButton value="Remover" class="btn btn-default" action="#{veiculoMB.removerVeiculo(veiculo)}"/>
+                            </div>
+                        </h:column>
+                    </h:dataTable>
+                    <br/><br/>
+                    <h:commandButton value="Novo Veículo" class="btn btn-default" action="#{veiculoMB.novoVeiculo()}"/>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
+

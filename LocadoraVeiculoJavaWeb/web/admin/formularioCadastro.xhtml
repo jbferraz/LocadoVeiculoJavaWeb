@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <h:form prependId="false" class="form-horizontal">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Logo</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">        
+                                <li class="active"><a outcome="/admin/index">Home</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><h:commandLink value="Cadastrar" action="#{usuarioMB.novoUsuario()}"/></li>
+                                        <li><h:commandLink value="Listar" action="/admin/index"/></li>
+
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Veículos
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><h:commandLink value="Cadastrar" action="#{veiculoMB.novoVeiculo()}"/></li>
+                                        <li><h:commandLink value="Listar" action="/admin/listaVeiculos"/></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><h:commandLink class="glyphicon glyphicon-log-in" value=" Logout" action="#{loginMB.realizaLogout()}"/></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <center>
+                    <h1>Cadastro Cliente</h1>
+                </center>
+                <div class="form-group">
+                    <h:outputLabel value="Nome " for="idNome" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:inputText value="#{usuarioMB.usuarioSelecionado.nome}" id="idNome"  styleClass="form-control"/> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Telefone: " for="idTelefone" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:inputText value="#{usuarioMB.usuarioSelecionado.telefone}" id="idTelefone"  styleClass="form-control"/> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Email: " for="idEmail" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:inputText id="idEmail" value="#{usuarioMB.usuarioSelecionado.email}"  styleClass="form-control"/> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Sexo: " for="idSexo" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:selectOneMenu id="idSexo" value="#{usuarioMB.usuarioSelecionado.sexo}" styleClass="form-control">
+                            <f:selectItem itemLabel="Masculino" itemValue="1" />
+                            <f:selectItem itemLabel="Feminino" itemValue="2" />
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="idEstado" value="Estado:" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:selectOneMenu id="idEstado" value="#{usuarioMB.usuarioSelecionado.estado}" styleClass="form-control">
+                            <f:selectItem itemLabel="Rio Grande do Sul" itemValue="RS" />
+                            <f:selectItem itemLabel="Santa Catarina" itemValue="SC" />
+                            <f:selectItem itemLabel="Paraná" itemValue="PR" />
+                            <f:selectItem itemLabel="São Paulo" itemValue="SP" />
+                            <f:selectItem itemLabel="Rio de Janeiro" itemValue="RJ" />
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Login: " for="idLogin" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:inputText value="#{usuarioMB.usuarioSelecionado.login}" id="idLogin"  styleClass="form-control"/> 
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel value="Senha " for="idSenha" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:inputText value="#{usuarioMB.usuarioSelecionado.senha}" id="idSenha"  styleClass="form-control"/> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Admin " for="idAdmin" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:selectBooleanCheckbox  value="#{usuarioMB.usuarioSelecionado.admin}" styleClass="checkbox"/> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <h:commandButton value="Cadastrar" class="btn btn-default" action="#{usuarioMB.adicionarUsuario()}" />
+                        <td></td>
+
+                        <h:button value="Voltar" outcome="/admin/index" class="btn btn-default"/>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
