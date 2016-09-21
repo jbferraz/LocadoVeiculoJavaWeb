@@ -65,7 +65,7 @@ public class VeiculoMB {
     }
     public String atualizarVeiculo()
     {
-        return("/admin/ListaVeiculo?faces-redirect=true");
+        return("/admin/listaVeiculos?faces-redirect=true");
     }
 
     public void removerVeiculo(Veiculo veiculo){
