@@ -28,7 +28,10 @@ public class VeiculoMB {
     public VeiculoMB() {
         veiculoSelecionado = new Veiculo();
         listaVeiculos = new ArrayList<Veiculo>();
-       // listaVeiculos.add(new Veiculo("admin", "admin"));
+       listaVeiculos.add(new Veiculo("GM", "CELTA", "ABC1234", "AZUL", "COMPLETO", 1, 100, 2010));
+       listaVeiculos.add(new Veiculo("FORD", "KA", "ITH1234", "AZUL", "COMPLETO", 2, 150, 2015));
+       listaVeiculos.add(new Veiculo("VW", "GOL", "XXX2020", "AZUL", "COMPLETO", 1, 120, 2012));
+       listaVeiculos.add(new Veiculo("FIAT", "UNO", "OPA1020", "AZUL", "COMPLETO", 1, 80, 2009));
     }
     
     public Veiculo getVeiculoSelecionado() {
@@ -39,7 +42,7 @@ public class VeiculoMB {
         this.veiculoSelecionado = veiculoSelecionado;
     }
 
-    public List<Veiculo> getListaVeiculos() {
+    public  List<Veiculo> getListaVeiculos() {
         return listaVeiculos;
     }
 
@@ -71,5 +74,13 @@ public class VeiculoMB {
     public void removerVeiculo(Veiculo veiculo){
         listaVeiculos.remove(veiculo);
     }
-
+    public String reservarVeiculo(Veiculo u)
+    {
+        veiculoSelecionado = u;
+        return ("/usuario/locacaoVeiculo?faces-redirect=true");
+    }
+    public String confirmarVeiculo()
+    {
+        return("/usuario/listaLocacao?faces-redirect=true");
+    }
 }

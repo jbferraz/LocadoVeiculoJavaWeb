@@ -11,22 +11,33 @@ package model;
  */
 public class Veiculo {
 
-    String marca;
-    String modelo;
-    String placa;
-    String cor;
-    String opcionais;
-    int valorKm;
-    int valorDia;
-    int kmRetirada;
-    int kmDevolucao;
-    int ano;
-    boolean ativo;
-    boolean locado;
+    private String marca;
+    private String modelo;
+    private String placa;
+    private String cor;
+    private String opcionais;
+    private int valorKm;
+    private int valorDia;
+    private int kmRetirada;
+    private int kmDevolucao;
+    private int ano;
+    private boolean ativo;
+    private boolean locado;
 
     public Veiculo() {
     }
-
+    
+    public Veiculo(String marca,String modelo,String placa,String cor,String opcionais,int valorKm,int valorDia,int ano){
+        this.marca = marca;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.cor = cor;
+        this.opcionais = opcionais;
+        this.valorKm = valorKm;
+        this.valorDia = valorDia;
+        this.ano = ano;
+        this.locado = false;
+    }
     /**
      * @return the marca
      */

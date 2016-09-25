@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
     <h:head>
         <title>Editar Veículo</title>
         <meta charset="utf-8" />
@@ -10,6 +12,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     </h:head>
     <h:body>
         <div class="container-fluid">
@@ -26,21 +29,14 @@
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">        
-                                <li class="active"><h:commandLink value="Home" action="/admin/index"/>
-                                </li>                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente
-                                        <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><h:commandLink value="Cadastrar" action="#{usuarioMB.novoUsuario()}"/></li>
-                                        <li><h:commandLink value="Listar" action="/admin/index"/></li>
-                                    </ul>
-                                </li>
+                                <li class="active"><h:commandLink value="Home" action="/usuario/index"/>
+                                </li>                      
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Veículos
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><h:commandLink value="Cadastrar" action="#{veiculoMB.novoVeiculo()}"/></li>
-                                        <li><h:commandLink value="Listar" action="/admin/listaVeiculos"/></li>
+                                        <li><h:commandLink value="Listar" action="/usuario/listaLocacao"/></li>
+                                        <li><h:commandLink value="Reserva" action="/usuario/listaReservado"/></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -50,73 +46,92 @@
                         </div>
                     </div>
                 </nav>
+
                 <center>
-                    <h1>Editar Veículo</h1>
+                    <h1>Reservar Veículo</h1>
                 </center>
                 <div class="form-group">
                     <h:outputLabel value="Marca: " for="idMarca" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
-                        <h:inputText value="#{veiculoMB.veiculoSelecionado.marca}" id="idMarca"  styleClass="form-control"/> 
+                        <h:inputText  value="#{veiculoMB.veiculoSelecionado.marca}" id="idMarca"  styleClass="form-control" disabled="true"/> 
                     </div>
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="Modelo: " for="idModelo" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
-                        <h:inputText value="#{veiculoMB.veiculoSelecionado.modelo}" id="idModelo"  styleClass="form-control"/> 
+                        <h:inputText value="#{veiculoMB.veiculoSelecionado.modelo}" id="idModelo"  styleClass="form-control" disabled="true"/> 
+                        #{locacaoMB.locacaoSelecionado.setModelo_Veiculo(veiculoMB.veiculoSelecionado.modelo)}
                     </div>
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="Placa: " for="idPlaca" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
-                        <h:inputText id="idPlaca" value="#{veiculoMB.veiculoSelecionado.placa}"  styleClass="form-control"/> 
+                        <h:inputText id="idPlaca" value="#{veiculoMB.veiculoSelecionado.placa}"  styleClass="form-control" disabled="true"/> 
+                        #{locacaoMB.locacaoSelecionado.setPlaca_Veiculo(veiculoMB.veiculoSelecionado.placa)}
                     </div>
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="Cor: " for="idCor" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
-                        <h:inputText id="idCor" value="#{veiculoMB.veiculoSelecionado.cor}"  styleClass="form-control"/> 
+                        <h:inputText id="idCor" value="#{veiculoMB.veiculoSelecionado.cor}"  styleClass="form-control" disabled="true"/> 
                     </div>
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="Ano " for="idAno" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
-                        <h:inputText id="idAno" value="#{veiculoMB.veiculoSelecionado.ano}"  styleClass="form-control"/> 
+                        <h:inputText id="idAno" value="#{veiculoMB.veiculoSelecionado.ano}"  styleClass="form-control" disabled="true"/> 
+                        #{locacaoMB.locacaoSelecionado.setAno_Veiculo(veiculoMB.veiculoSelecionado.ano)}
                     </div>
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="Opcionais " for="idOpcionais" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
-                        <h:inputText id="idOpcionais" value="#{veiculoMB.veiculoSelecionado.opcionais}"  styleClass="form-control"/> 
+                        <h:inputText id="idOpcionais" value="#{veiculoMB.veiculoSelecionado.opcionais}"  styleClass="form-control" disabled="true"/> 
+                        #{locacaoMB.locacaoSelecionado.setOp_Veiculo(veiculoMB.veiculoSelecionado.opcionais)}
                     </div>
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="Valor KM: " for="idValorKm" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
-                        <h:inputText id="idValorKm" value="#{veiculoMB.veiculoSelecionado.valorKm}"  styleClass="form-control"/> 
+                        <h:inputText id="idValorKm" value="#{veiculoMB.veiculoSelecionado.valorKm}"  styleClass="form-control" disabled="true"/> 
+                        #{locacaoMB.locacaoSelecionado.setValorKm_Veiculo(veiculoMB.veiculoSelecionado.valorKm)}
                     </div>
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="Valor Diária: " for="idValorDia" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
-                        <h:inputText id="idValorDia" value="#{veiculoMB.veiculoSelecionado.valorDia}"  styleClass="form-control"/> 
+                        <h:inputText id="idValorDia"  value="#{veiculoMB.veiculoSelecionado.valorDia}"  styleClass="form-control" disabled="true"/> 
+                        #{locacaoMB.locacaoSelecionado.setValorDia_Veiculo(veiculoMB.veiculoSelecionado.valorDia)}
                     </div>
                 </div>
                 <div class="form-group">
-                    <h:outputLabel value="Locado " for="idLocado" styleClass="control-label" class="control-label col-sm-2"/>
+                    <h:outputLabel value="Data Retirada: " for="idRetirada" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:inputText id="idRetirada"  value="#{locacaoMB.locacaoSelecionado.dataRetirada}" styleClass="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Data Devolução " for="idDevolucao" styleClass="control-label" class="control-label col-sm-2"/>
+                    <div class="col-sm-3">
+                        <h:inputText id="idDevolucao"  value="#{locacaoMB.locacaoSelecionado.dataDevolucao}" styleClass="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Reservar Veículo " for="idReservado" styleClass="control-label" class="control-label col-sm-2"/>
                     <div class="col-sm-3">
                         <h:selectBooleanCheckbox required="true" value="#{veiculoMB.veiculoSelecionado.locado}"  styleClass="checkbox"/>
+                        #{locacaoMB.locacaoSelecionado.setReservado(true)}     
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <h:commandButton value="Cadastrar" class="btn btn-default" action="#{veiculoMB.atualizarVeiculo()}" />
+                        <h:commandButton value="Confirmar" class="btn btn-default" action="#{locacaoMB.adicionarLocacao()}" />
                         <td></td>
-                        <h:button value="Voltar" outcome="/admin/index" class="btn btn-default"/>
+                        <h:button value="Voltar" outcome="/usuario/listaLocacao" class="btn btn-default"/>
                     </div>
                 </div>
             </h:form>
         </div>
     </h:body>
 </html>
-
 

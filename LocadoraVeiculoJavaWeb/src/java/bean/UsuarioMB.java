@@ -29,6 +29,7 @@ public class UsuarioMB {
         usuarioSelecionado = new Usuario();
         listaUsuarios = new ArrayList<Usuario>();
         listaUsuarios.add(new Usuario("admin", "admin"));
+        listaUsuarios.add(new Usuario("felipebkl", "1234"));
     }
     
     public Usuario getUsuarioSelecionado() {

@@ -74,7 +74,7 @@ public class LoginMB implements Serializable{
                 if (usuario.isAdmin()) {
                     return ("/admin/index?faces-redirect=true");
                 } else {
-                    return ("usuario/index?faces-redirect=true");
+                    return ("usuario/listaLocacao?faces-redirect=true");
                 }
             }
         }

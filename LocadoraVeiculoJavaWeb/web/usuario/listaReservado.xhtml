@@ -22,26 +22,18 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Logo</a>
+                            <a class="navbar-brand" href="#">LocaCar</a>
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">        
-                                <li class="active"><h:commandLink value="Home" action="/admin/index"/>
-                                </li>                                
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente
-                                        <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><h:commandLink value="Cadastrar" action="#{usuarioMB.novoUsuario()}"/></li>
-                                        <li><h:commandLink value="Listar" action="/admin/index"/></li>
-                                    </ul>
-                                </li>
+                                <li class="active"><h:commandLink value="Home" action="/usuario/index"/>
+                                </li>                         
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Veículos
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><h:commandLink value="Cadastrar" action="#{veiculoMB.novoVeiculo()}"/></li>
-                                        <li><h:commandLink value="Listar" action="/admin/listaVeiculos"/></li>
+                                        <li><h:commandLink value="Listar" action="/usuario/listaLocacao"/></li>
+                                        <li><h:commandLink value="Reserva" action="/usuario/listaReservado"/></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -52,69 +44,63 @@
                     </div>
                 </nav>
                 <div class="table-responsive">
-                    <h:dataTable var="veiculo" value="#{veiculoMB.listaVeiculos}" styleClass="table">
+                    <h:dataTable var="locacao" value="#{locacaoMB.listaLocacoes}" styleClass="table">
                         <f:facet name="header">
                             <h:outputText value="Tabela de Veiculos" />
                         </f:facet>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Marca" />
-                            </f:facet>
-                            <h:outputText id="idMarca" value="#{veiculo.marca}"  />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="Modelo" />
                             </f:facet>
-                            <h:outputText id="idModelo" value="#{veiculo.modelo}" />
+                            <h:outputText id="idModelo" value="#{locacao.modelo_Veiculo}"  />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Placa" />
                             </f:facet>
-                            <h:outputText id="idPlaca" value="#{veiculo.placa}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Cor" />
-                            </f:facet>
-                            <h:outputText id="idCor" value="#{veiculo.cor}" />
+                            <h:outputText id="idPlaca" value="#{locacao.placa_Veiculo}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Ano" />
                             </f:facet>
-                            <h:outputText id="idAno" value="#{veiculo.ano}" />
+                            <h:outputText id="idAno" value="#{locacao.ano_Veiculo}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Valor KM" />
                             </f:facet>
-                            <h:outputText id="idValorKm" value="#{veiculo.valorKm}" />
+                            <h:outputText id="idValorKm" value="#{locacao.valorKm_Veiculo}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Valor Diaria" />
                             </f:facet>
-                            <h:outputText id="idValorDia" value="#{veiculo.valorDia}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="KM" />
-                            </f:facet>
-                            <h:outputText id="idKmDevolucao" value="#{veiculo.kmDevolucao}" />
+                            <h:outputText id="idValorDia" value="#{locacao.valorDia_Veiculo}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Opcionais" />
                             </f:facet>
-                            <h:outputText id="idOpcionais" value="#{veiculo.opcionais}" />
+                            <h:outputText id="idOpcionais" value="#{locacao.op_Veiculo}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Status" />
                             </f:facet>
-                            <h:outputText id="idLocado" value="#{veiculo.locadoString}" />
+                            <h:outputText id="idLocado" value="#{locacao.reservadoString}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Data Retirada" />
+                            </f:facet>
+                            <h:outputText id="idRetirada" value="#{locacao.dataRetirada}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Devolução" />
+                            </f:facet>
+                            <h:outputText id="idDevolucao" value="#{locacao.dataDevolucao}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -122,18 +108,12 @@
                                     <h:outputText value="Operação" />
                                 </span>
                             </f:facet>
-                            <div class="btn-group">
-                                <h:commandButton value="Editar "  class="btn btn-default" action="#{veiculoMB.editarVeiculo(veiculo)}" />
-                                <h:commandButton value="Remover" class="btn btn-default" action="#{veiculoMB.removerVeiculo(veiculo)}"/>
-                            </div>
+                            <h:commandButton value="Cancelar Reserva"  class="btn btn-default" action="#{locacaoMB.removerLocacao(locacao)}" /> 
+                            
                         </h:column>
                     </h:dataTable>
-                    <br/><br/>
-                    <h:commandButton value="Novo Veículo" class="btn btn-default" action="#{veiculoMB.novoVeiculo()}"/>
                 </div>
             </h:form>
         </div>
     </h:body>
 </html>
-
-

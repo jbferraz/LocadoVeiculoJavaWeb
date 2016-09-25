@@ -28,8 +28,9 @@ public class Usuario {
         this.nome = login;        
         this.login = login;
         this.senha = senha;
-        this.admin = true;
-        this.sexo = 1;
+        
+        this.admin = nome.equals("admin");
+        this.sexo = 1; 
         this.estado="RS";
     }
 
