@@ -109,7 +109,7 @@
                                 </span>
                             </f:facet>
                             <h:commandButton value="Cancelar Reserva"  class="btn btn-default" action="#{locacaoMB.removerLocacao(locacao)}" /> 
-                            
+                            #{veiculoMB.veiculoSelecionado.setLocado(false)}
                         </h:column>
                     </h:dataTable>
                 </div>

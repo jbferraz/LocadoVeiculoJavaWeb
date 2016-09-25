@@ -32,6 +32,7 @@ public class VeiculoMB {
        listaVeiculos.add(new Veiculo("FORD", "KA", "ITH1234", "AZUL", "COMPLETO", 2, 150, 2015));
        listaVeiculos.add(new Veiculo("VW", "GOL", "XXX2020", "AZUL", "COMPLETO", 1, 120, 2012));
        listaVeiculos.add(new Veiculo("FIAT", "UNO", "OPA1020", "AZUL", "COMPLETO", 1, 80, 2009));
+       
     }
     
     public Veiculo getVeiculoSelecionado() {
@@ -68,6 +69,7 @@ public class VeiculoMB {
     }
     public String atualizarVeiculo()
     {
+        veiculoSelecionado.setLocado(false);
         return("/admin/listaVeiculos?faces-redirect=true");
     }
 
