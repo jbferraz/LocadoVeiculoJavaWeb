@@ -24,7 +24,7 @@ public class VeiculoMB {
     //CRUD
     private List<Veiculo> listaVeiculos;
     private Veiculo veiculoSelecionado;
-
+    
     public VeiculoMB() {
         veiculoSelecionado = new Veiculo();
         listaVeiculos = new ArrayList<Veiculo>();
@@ -44,7 +44,13 @@ public class VeiculoMB {
     }
 
     public  List<Veiculo> getListaVeiculos() {
-        return listaVeiculos;
+        List<Veiculo> veiculosLivres = new ArrayList<Veiculo>();
+        for(Veiculo veiculo : listaVeiculos){
+                if(veiculo.getLocadoString()=="Livre"){
+                        veiculosLivres.add(veiculo);
+                }
+        }
+        return veiculosLivres;
     }
 
     public void setListaVeiculos(List<Veiculo> listaVeiculos) {

@@ -50,7 +50,7 @@ public class LocacaoMB {
 
     public String novoLocacao() {
         locacaoSelecionado = new Locacao();
-        return ("/usuario/locacaoVeiculo?faces-redirect=true");
+        return ("/usuario/listaLocacao?faces-redirect=true");
     }
 
     public String adicionarLocacao() {

@@ -209,5 +209,9 @@ public class Veiculo {
         if(locado==true) return "Locado";
         else return "Livre";
     }
+
+    public boolean getLocadoString(String livre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
