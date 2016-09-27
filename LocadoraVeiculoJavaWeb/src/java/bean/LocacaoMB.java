@@ -40,7 +40,13 @@ public class LocacaoMB {
     }
     
     public List<Locacao> getListaLocacoes() {
-        return listaLocacoes;
+        List<Locacao> veiculosLocados = new ArrayList<Locacao>();
+        for(Locacao locacao : listaLocacoes){
+                if(locacao.getLocadoString()=="Livre"){
+                        veiculosLocados.add(locacao);
+                }
+        }
+        return veiculosLocados;
     }
     
     public void setListaLocacoes(List<Locacao> listaLocacoes) {
